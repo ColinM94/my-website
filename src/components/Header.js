@@ -31,7 +31,7 @@ function Header(props) {
         <div className={classes.container}>
             <Button className={classes.button} color="primary">Projects</Button>
             <Button className={classes.button} color="primary">Contact</Button>
-            <Button className={classes.button} color="primary">Tutoring</Button>
+            <Button className={classes.button} color="primary" onClick={()=> window.open("cv.pdf", "_blank")}>CV</Button>
             <Tooltip title={props.darkMode ? "Light Mode" : "Dark Mode"} className={classes.darkModeBtn} onClick={() => props.setDarkMode(!props.darkMode)}>
                 <IconButton aria-label="dark mode">
                     <Brightness7Icon color="primary"/>
