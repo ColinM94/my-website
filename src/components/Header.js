@@ -5,30 +5,31 @@ import GitHubIcon from '@material-ui/icons/GitHub'
 import LinkedInIcon from '@material-ui/icons/LinkedIn'
 import { useHistory } from "react-router-dom";
 
-const useStyles = makeStyles((theme) => ({
-    header: {
-        backgroundColor: "#20252b",
-        color: "white"
-    },
-    headerContent: {
-        display: "flex",
-        justifyContent: "space-around",
-        alignItems: "center",
-        color: "white"
-    },
-    darkModeBtn: {
-     /*    marginLeft: "auto" */
-    },
-    button: {
-        paddingTop: 10,
-        paddingBottom: 10,
-        color: "white"
-    }
-}))
+
 
 function Header(props) {
-    const history = useHistory();
+    const useStyles = makeStyles((theme) => ({
+        header: {
+           backgroundColor: props.darkMode ? "#20252b" : "#b3d0f2"
+        },
+        headerContent: {
+            display: "flex",
+            justifyContent: "space-around",
+            alignItems: "center",
+        },
+        darkModeBtn: {
+         /*    marginLeft: "auto" */
+        },
+        button: {
+            paddingTop: 10,
+            paddingBottom: 10,
+        }
+    }))
+
+    const history = useHistory()
     const classes = useStyles()
+    const {darkMode} = props
+    
 /*     const preventDefault = (event) => event.preventDefault();
     const [value, setValue] = useState(0);
     
@@ -41,8 +42,8 @@ function Header(props) {
                 <Button className={classes.button} onClick={() => history.push('/tutoring')}>Tutoring</Button>
                 <Button className={classes.button} onClick={() => history.push('/projects')}>Projects</Button>
 
-                <Tooltip title={props.darkMode ? "Light Mode" : "Dark Mode"} className={classes.darkModeBtn} onClick={() => props.setDarkMode(!props.darkMode)}>
-                    <IconButton aria-label="dark mode" style={{color: "white"}}>
+                <Tooltip title={darkMode ? "Light Mode" : "Dark Mode"} className={classes.darkModeBtn} onClick={() => props.setDarkMode(!props.darkMode)}>
+                    <IconButton aria-label="dark mode">
                         <Brightness7Icon/>
                     </IconButton>
                 </Tooltip>
