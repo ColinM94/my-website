@@ -1,12 +1,12 @@
 import { useState } from "react"
-import { createMuiTheme, CssBaseline, Container } from "@material-ui/core"
+import { createMuiTheme, CssBaseline, Container, Grid } from "@material-ui/core"
 import { ThemeProvider, makeStyles } from "@material-ui/core/styles"
 import "styles/style.css"
 import "typeface-dosis"
 
 // My components.
 import Header from "components/Header"
-import Home from "screens/Home"
+import About from "screens/About"
 import Tutoring from "screens/Tutoring"
 import Projects from "screens/Projects"
 
@@ -25,13 +25,13 @@ function App() {
     palette: {
       type: darkMode ? "dark" : "light",
       secondary: {
-        main: "#336699"
+        main: "#C20114"
       },
       text: {
 
       },
       background: {
-        default: darkMode ? "#121212" : "#fafafa"
+        default: darkMode ? "#121212" : "#FBFBFF"
       } 
     },
     typography: {
@@ -39,54 +39,61 @@ function App() {
         'dosis'
       ],
       h1: {
-        fontSize: 70
+        fontSize: 55
+      },
+      h2: {
+        fontSize: 50
+      },
+      h3: {
+        fontSize: 45
+      },
+      h4: {
+        fontSize: 40
+      },
+      h5: {
+        fontSize: 35
+      },
+      h6: {
+        fontSize: 30
+      },
+      body1: {
+        fontSize: 17
+      },
+      body2: {
+        fontSize: 15
+      },
+      button: {
+        fontSize: 17,
+        textTransform: "none"
       }
     }
   })
 
   const useStyles = makeStyles((theme) => ({
     container: {
-      textAlign: "center",
-      paddingTop: 20
+      padding: 20,
+      paddingTop: 25,
+      paddingBottom: 25,
     },
-    paper: {
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-    title: {
-      fontSize: 40,
-      marginBottom: 10,
-      marginTop: 0
-    },
-    button: {
-      textTransform: "none",
-      padding: "15px",
-      margin: "auto",
-      justifyContent: "flex-start"
-    },
-    '@media (min-width: 1024px)': {
-      button: {
-        width: 200
-      }
-    }
   }))
 
   const classes = useStyles()
-  const [emailToolTipOpen, setEmailTooltipOpen] = useState(false)
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
         <Header darkMode={darkMode} setDarkMode={setDarkMode}/>
-        <Container maxWidth="sm" className={classes.container}>
-          <Switch>
-            <Route exact path="/home" component={Home} />
-            <Route exact path="/tutoring" component={Tutoring} />
-            <Route exact path="/projects" component={Projects} />
-            <Route render={() => <Redirect to={{pathname: "/home"}} />} />
-          </Switch>
-        </Container>
+          <Container maxWidth="md" className={classes.container}>
+            <Grid container spacing={5} justify="center" alignItems="center" >
+              <Switch>
+                <Route exact path="/about" component={About} />
+                <Route exact path="/tutoring" component={Tutoring} />
+                <Route exact path="/projects" component={Projects} />
+                <Route render={() => <Redirect to={{pathname: "/about"}} />} />
+              </Switch>
+            </Grid>       
+          </Container>
       </Router>   
     </ThemeProvider>
   )
