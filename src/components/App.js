@@ -19,7 +19,8 @@ import {
 
 function App() {
   const [darkMode, setDarkMode] = useState(true)
-  
+  const [headerHeight, setHeaderHeight] = useState(60)
+
   const theme = createMuiTheme({
     spacing: 8,
     palette: {
@@ -69,23 +70,27 @@ function App() {
     }
   })
 
+
   const useStyles = makeStyles((theme) => ({
     container: {
       padding: 20,
       paddingTop: 25,
       paddingBottom: 25,
+      display: "flex",
+/*       minHeight: `calc(75vh - ${headerHeight}px)`,
+      flexDirection: "column",
+      justifyContent: "center", */
     },
   }))
-
   const classes = useStyles()
-
+  
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
-        <Header darkMode={darkMode} setDarkMode={setDarkMode}/>
+        <Header darkMode={darkMode} setDarkMode={setDarkMode} headerHeight={headerHeight}/>
           <Container maxWidth="md" className={classes.container}>
-            <Grid container spacing={5} justify="center" alignItems="center" >
+            <Grid container spacing={5}>
               <Switch>
                 <Route exact path="/about" component={About} />
                 <Route exact path="/tutoring" component={Tutoring} />

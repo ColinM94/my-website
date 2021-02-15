@@ -6,7 +6,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert'
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 
 
-function Header({ darkMode, setDarkMode}) {
+function Header({ darkMode, setDarkMode, headerHeight}) {
     const useStyles = makeStyles((theme) => ({
         header: {
             backgroundColor: darkMode ? "#20252b" : "#3626A7",
@@ -17,6 +17,7 @@ function Header({ darkMode, setDarkMode}) {
             alignItems: "center",
             position: "relative",
             justifyContent: "center",
+            alignContent: "center",
             height: headerHeight,
         },
         icon: {
@@ -25,9 +26,12 @@ function Header({ darkMode, setDarkMode}) {
             [theme.breakpoints.down('sm')]: {
                 display: "none"
             },
-            fontSize: 22, 
+            fontSize: 20, 
             fontWeight: "bold",   
-            color: "white" 
+            color: theme.palette.secondary.light,
+            '&:hover': {
+                cursor: "pointer"
+            },
         },
         darkModeBtn: {
             position: "absolute",
@@ -56,7 +60,6 @@ function Header({ darkMode, setDarkMode}) {
         }
     }))
 
-    const headerHeight = 60
     const classes = useStyles()
     const history = useHistory()
     const location = useLocation()
@@ -79,7 +82,7 @@ function Header({ darkMode, setDarkMode}) {
         <div className={classes.header}>
             <Container maxWidth="lg" disableGutters className={classes.headerContent}>  
                 <Typography align="justify" className={classes.icon} onClick={() => history.push('/about')}>
-                    COLIN MAHER
+                    {"<ColinMaher.dev/>"}
                 </Typography>     
                 <Button className={[classes.button, location.pathname==="/about" ? classes.active : null]} onClick={() => history.push('/about')}>About Me</Button>
                 <Button className={[classes.button, location.pathname==="/tutoring" ? classes.active : null]} onClick={() => history.push('/tutoring')}>Tutoring</Button>

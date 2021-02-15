@@ -42,21 +42,21 @@ function About({theme}) {
 
 const useStyles = makeStyles((theme) => ({
   title: {
-    [theme.breakpoints.up('sm')]: {
+  /*   [theme.breakpoints.up('sm')]: {
       marginBottom: 30
-    },
+    }, */
   },
   links: {
-    maxWidth: 500,
+/*     maxWidth: 500,
     margin: "auto",
     [theme.breakpoints.up('sm')]: {
       marginTop: 50
-    }, 
+    },  */
   },
   button: {
-    textTransform: "none",
+  /*   textTransform: "none",
     width: "100%",
-    marginBottom: 10,
+    marginBottom: 10, */
   },
 }))
 
